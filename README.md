@@ -8,4 +8,4 @@ Following pretrained models from HuggingFace are chosen and finetuned for Qualit
 4) wav2vec 2.0
 5) wavLM
 
-The above models have been finetuned on NISQA dataset for MOS prediction using audio waveform. 
+The above models have been finetuned on NISQA dataset for MOS prediction using audio waveform input. 
