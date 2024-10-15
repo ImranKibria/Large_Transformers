@@ -1,0 +1,135 @@
+2024-06-26 21:56:36.606002: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2024-06-26 21:56:36.606117: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2024-06-26 21:56:38.156252: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2024-06-26 21:56:39.921919: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2024-06-26 21:56:45.271351: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+/users/PAS2301/kibria5/.conda/envs/vit_env/lib/python3.9/site-packages/huggingface_hub/file_download.py:1132: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+/users/PAS2301/kibria5/.conda/envs/vit_env/lib/python3.9/site-packages/torch/nn/utils/weight_norm.py:28: UserWarning: torch.nn.utils.weight_norm is deprecated in favor of torch.nn.utils.parametrizations.weight_norm.
+  warnings.warn("torch.nn.utils.weight_norm is deprecated in favor of torch.nn.utils.parametrizations.weight_norm.")
+Some weights of the model checkpoint at patrickvonplaten/wavlm-libri-clean-100h-base-plus were not used when initializing WavLMForSequenceClassification: ['lm_head.weight', 'lm_head.bias']
+- This IS expected if you are initializing WavLMForSequenceClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing WavLMForSequenceClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of WavLMForSequenceClassification were not initialized from the model checkpoint at patrickvonplaten/wavlm-libri-clean-100h-base-plus and are newly initialized: ['projector.weight', 'classifier.bias', 'classifier.weight', 'projector.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+Availability of torch:  True
+Device for model training & evaluation:  cuda
+
+*** NISQA VAL SIM ***
+
+*** NISQA VAL LIVE ***
+
+*** NISQA TEST FOR ***
+
+*** NISQA TEST P501 ***
+
+*** NISQA TEST LIVETALK ***
+WavLMForSequenceClassification(
+  (wavlm): WavLMModel(
+    (feature_extractor): WavLMFeatureEncoder(
+      (conv_layers): ModuleList(
+        (0): WavLMGroupNormConvLayer(
+          (conv): Conv1d(1, 512, kernel_size=(10,), stride=(5,), bias=False)
+          (activation): GELUActivation()
+          (layer_norm): GroupNorm(512, 512, eps=1e-05, affine=True)
+        )
+        (1-4): 4 x WavLMNoLayerNormConvLayer(
+          (conv): Conv1d(512, 512, kernel_size=(3,), stride=(2,), bias=False)
+          (activation): GELUActivation()
+        )
+        (5-6): 2 x WavLMNoLayerNormConvLayer(
+          (conv): Conv1d(512, 512, kernel_size=(2,), stride=(2,), bias=False)
+          (activation): GELUActivation()
+        )
+      )
+    )
+    (feature_projection): WavLMFeatureProjection(
+      (layer_norm): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+      (projection): Linear(in_features=512, out_features=768, bias=True)
+      (dropout): Dropout(p=0.0, inplace=False)
+    )
+    (encoder): WavLMEncoder(
+      (pos_conv_embed): WavLMPositionalConvEmbedding(
+        (conv): Conv1d(768, 768, kernel_size=(128,), stride=(1,), padding=(64,), groups=16)
+        (padding): WavLMSamePadLayer()
+        (activation): GELUActivation()
+      )
+      (layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+      (dropout): Dropout(p=0.0, inplace=False)
+      (layers): ModuleList(
+        (0): WavLMEncoderLayer(
+          (attention): WavLMAttention(
+            (k_proj): Linear(in_features=768, out_features=768, bias=True)
+            (v_proj): Linear(in_features=768, out_features=768, bias=True)
+            (q_proj): Linear(in_features=768, out_features=768, bias=True)
+            (out_proj): Linear(in_features=768, out_features=768, bias=True)
+            (gru_rel_pos_linear): Linear(in_features=64, out_features=8, bias=True)
+            (rel_attn_embed): Embedding(320, 12)
+          )
+          (dropout): Dropout(p=0.0, inplace=False)
+          (layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (feed_forward): WavLMFeedForward(
+            (intermediate_dropout): Dropout(p=0.0, inplace=False)
+            (intermediate_dense): Linear(in_features=768, out_features=3072, bias=True)
+            (intermediate_act_fn): GELUActivation()
+            (output_dense): Linear(in_features=3072, out_features=768, bias=True)
+            (output_dropout): Dropout(p=0.0, inplace=False)
+          )
+          (final_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+        (1-11): 11 x WavLMEncoderLayer(
+          (attention): WavLMAttention(
+            (k_proj): Linear(in_features=768, out_features=768, bias=True)
+            (v_proj): Linear(in_features=768, out_features=768, bias=True)
+            (q_proj): Linear(in_features=768, out_features=768, bias=True)
+            (out_proj): Linear(in_features=768, out_features=768, bias=True)
+            (gru_rel_pos_linear): Linear(in_features=64, out_features=8, bias=True)
+          )
+          (dropout): Dropout(p=0.0, inplace=False)
+          (layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+          (feed_forward): WavLMFeedForward(
+            (intermediate_dropout): Dropout(p=0.0, inplace=False)
+            (intermediate_dense): Linear(in_features=768, out_features=3072, bias=True)
+            (intermediate_act_fn): GELUActivation()
+            (output_dense): Linear(in_features=3072, out_features=768, bias=True)
+            (output_dropout): Dropout(p=0.0, inplace=False)
+          )
+          (final_layer_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+        )
+      )
+    )
+  )
+  (projector): Linear(in_features=768, out_features=256, bias=True)
+  (classifier): Linear(in_features=256, out_features=1, bias=True)
+)
+
+Testset under consideration:  NISQA_VAL_SIM
+  0%|          | 0/40 [00:00<?, ?it/s]  5%|▌         | 2/40 [00:00<00:03, 10.14it/s] 10%|█         | 4/40 [00:00<00:05,  6.49it/s] 12%|█▎        | 5/40 [00:00<00:05,  6.05it/s] 15%|█▌        | 6/40 [00:00<00:05,  5.75it/s] 18%|█▊        | 7/40 [00:01<00:05,  5.58it/s] 20%|██        | 8/40 [00:01<00:05,  5.40it/s] 22%|██▎       | 9/40 [00:01<00:05,  5.34it/s] 25%|██▌       | 10/40 [00:01<00:05,  5.31it/s] 28%|██▊       | 11/40 [00:01<00:05,  5.28it/s] 30%|███       | 12/40 [00:02<00:05,  5.27it/s] 32%|███▎      | 13/40 [00:02<00:05,  5.25it/s] 35%|███▌      | 14/40 [00:02<00:04,  5.23it/s] 38%|███▊      | 15/40 [00:02<00:04,  5.23it/s] 40%|████      | 16/40 [00:02<00:04,  5.23it/s] 42%|████▎     | 17/40 [00:03<00:04,  5.23it/s] 45%|████▌     | 18/40 [00:07<00:32,  1.46s/it] 48%|████▊     | 19/40 [00:07<00:22,  1.08s/it] 50%|█████     | 20/40 [00:07<00:16,  1.22it/s] 52%|█████▎    | 21/40 [00:08<00:11,  1.59it/s] 55%|█████▌    | 22/40 [00:08<00:08,  2.01it/s] 57%|█████▊    | 23/40 [00:08<00:06,  2.46it/s] 60%|██████    | 24/40 [00:08<00:06,  2.30it/s] 62%|██████▎   | 25/40 [00:09<00:05,  2.62it/s] 65%|██████▌   | 26/40 [00:11<00:11,  1.24it/s] 68%|██████▊   | 27/40 [00:11<00:08,  1.61it/s] 70%|███████   | 28/40 [00:11<00:05,  2.03it/s] 72%|███████▎  | 29/40 [00:11<00:04,  2.48it/s] 75%|███████▌  | 30/40 [00:11<00:03,  2.95it/s] 78%|███████▊  | 31/40 [00:11<00:02,  3.39it/s] 80%|████████  | 32/40 [00:12<00:02,  3.78it/s] 82%|████████▎ | 33/40 [00:12<00:01,  4.12it/s] 85%|████████▌ | 34/40 [00:12<00:01,  4.40it/s] 88%|████████▊ | 35/40 [00:12<00:01,  4.62it/s] 90%|█████████ | 36/40 [00:12<00:00,  4.78it/s] 92%|█████████▎| 37/40 [00:13<00:00,  4.90it/s] 95%|█████████▌| 38/40 [00:13<00:00,  4.99it/s] 98%|█████████▊| 39/40 [00:13<00:00,  5.06it/s]100%|██████████| 40/40 [00:13<00:00,  5.89it/s]100%|██████████| 40/40 [00:13<00:00,  2.92it/s]
+RMSE (utterance-level) =  0.45890448666351663
+Pearson Correlation Coefficient =  0.9116610235900626
+Spearman Rank Correlation Coefficient =  0.9109067089311279
+
+Testset under consideration:  NISQA_VAL_LIVE
+  0%|          | 0/4 [00:00<?, ?it/s] 50%|█████     | 2/4 [00:00<00:00, 10.20it/s]100%|██████████| 4/4 [00:00<00:00,  8.67it/s]100%|██████████| 4/4 [00:00<00:00,  7.65it/s]
+RMSE (utterance-level) =  0.3663478137757919
+Pearson Correlation Coefficient =  0.8563139340149808
+Spearman Rank Correlation Coefficient =  0.8514691713583113
+
+Testset under consideration:  NISQA_TEST_FOR
+  0%|          | 0/4 [00:00<?, ?it/s] 50%|█████     | 2/4 [00:00<00:00, 10.16it/s]100%|██████████| 4/4 [00:00<00:00,  6.97it/s]100%|██████████| 4/4 [00:00<00:00,  6.62it/s]
+RMSE (utterance-level) =  0.5160636769748279
+Pearson Correlation Coefficient =  0.8238722472835749
+Spearman Rank Correlation Coefficient =  0.806034750397246
+
+Testset under consideration:  NISQA_TEST_P501
+  0%|          | 0/4 [00:00<?, ?it/s] 50%|█████     | 2/4 [00:00<00:00,  8.76it/s] 75%|███████▌  | 3/4 [00:00<00:00,  6.83it/s]100%|██████████| 4/4 [00:00<00:00,  6.65it/s]100%|██████████| 4/4 [00:00<00:00,  6.24it/s]
+RMSE (utterance-level) =  0.5974733658763972
+Pearson Correlation Coefficient =  0.872297063862382
+Spearman Rank Correlation Coefficient =  0.865143171931905
+
+Testset under consideration:  NISQA_TEST_LIVETALK
+  0%|          | 0/4 [00:00<?, ?it/s] 50%|█████     | 2/4 [00:00<00:00,  9.45it/s] 75%|███████▌  | 3/4 [00:00<00:00,  7.06it/s]100%|██████████| 4/4 [00:00<00:00,  7.23it/s]100%|██████████| 4/4 [00:00<00:00,  6.68it/s]
+RMSE (utterance-level) =  0.7231460148849568
+Pearson Correlation Coefficient =  0.6732574163948691
+Spearman Rank Correlation Coefficient =  0.6403748362998377
