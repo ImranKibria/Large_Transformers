@@ -1,0 +1,87 @@
+2024-06-15 20:19:41.451151: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2024-06-15 20:19:41.451247: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2024-06-15 20:19:41.452015: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2024-06-15 20:19:41.456323: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2024-06-15 20:19:42.662576: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+/users/PAS2301/kibria5/.conda/envs/vit_env/lib/python3.9/site-packages/huggingface_hub/file_download.py:1132: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+/users/PAS2301/kibria5/.conda/envs/vit_env/lib/python3.9/site-packages/torch/nn/parallel/_functions.py:68: UserWarning: Was asked to gather along dimension 0, but all input tensors were scalars; will instead unsqueeze and return a vector.
+  warnings.warn('Was asked to gather along dimension 0, but all '
+Availability of torch:  True
+Device for model training & evaluation:  cuda
+
+*** NISQA VAL SIM ***
+
+*** NISQA VAL LIVE ***
+
+*** NISQA TEST FOR ***
+
+*** NISQA TEST P501 ***
+
+*** NISQA TEST LIVETALK ***
+ASTForAudioClassification(
+  (audio_spectrogram_transformer): ASTModel(
+    (embeddings): ASTEmbeddings(
+      (patch_embeddings): ASTPatchEmbeddings(
+        (projection): Conv2d(1, 768, kernel_size=(16, 16), stride=(10, 10))
+      )
+      (dropout): Dropout(p=0.0, inplace=False)
+    )
+    (encoder): ASTEncoder(
+      (layer): ModuleList(
+        (0-11): 12 x ASTLayer(
+          (attention): ASTAttention(
+            (attention): ASTSelfAttention(
+              (query): Linear(in_features=768, out_features=768, bias=True)
+              (key): Linear(in_features=768, out_features=768, bias=True)
+              (value): Linear(in_features=768, out_features=768, bias=True)
+              (dropout): Dropout(p=0.0, inplace=False)
+            )
+            (output): ASTSelfOutput(
+              (dense): Linear(in_features=768, out_features=768, bias=True)
+              (dropout): Dropout(p=0.0, inplace=False)
+            )
+          )
+          (intermediate): ASTIntermediate(
+            (dense): Linear(in_features=768, out_features=3072, bias=True)
+            (intermediate_act_fn): GELUActivation()
+          )
+          (output): ASTOutput(
+            (dense): Linear(in_features=3072, out_features=768, bias=True)
+            (dropout): Dropout(p=0.0, inplace=False)
+          )
+          (layernorm_before): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+          (layernorm_after): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+        )
+      )
+    )
+    (layernorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+  )
+  (classifier): Linear(in_features=768, out_features=1, bias=True)
+)
+Testset under consideration:  NISQA_VAL_SIM
+  0%|          | 0/40 [00:00<?, ?it/s]  5%|▌         | 2/40 [00:03<01:12,  1.90s/it]  8%|▊         | 3/40 [00:07<01:32,  2.49s/it] 10%|█         | 4/40 [00:10<01:44,  2.90s/it] 12%|█▎        | 5/40 [00:14<01:47,  3.09s/it] 15%|█▌        | 6/40 [00:17<01:47,  3.16s/it] 18%|█▊        | 7/40 [00:20<01:48,  3.27s/it] 20%|██        | 8/40 [00:24<01:45,  3.29s/it] 22%|██▎       | 9/40 [00:27<01:44,  3.38s/it] 25%|██▌       | 10/40 [00:31<01:40,  3.36s/it] 28%|██▊       | 11/40 [00:34<01:39,  3.42s/it] 30%|███       | 12/40 [00:38<01:34,  3.39s/it] 32%|███▎      | 13/40 [00:41<01:33,  3.47s/it] 35%|███▌      | 14/40 [00:45<01:30,  3.48s/it] 38%|███▊      | 15/40 [00:48<01:26,  3.44s/it] 40%|████      | 16/40 [00:52<01:25,  3.57s/it] 42%|████▎     | 17/40 [00:55<01:20,  3.49s/it] 45%|████▌     | 18/40 [00:59<01:16,  3.50s/it] 48%|████▊     | 19/40 [01:02<01:13,  3.49s/it] 50%|█████     | 20/40 [01:06<01:11,  3.55s/it] 52%|█████▎    | 21/40 [01:09<01:06,  3.48s/it] 55%|█████▌    | 22/40 [01:13<01:01,  3.43s/it] 57%|█████▊    | 23/40 [01:16<00:58,  3.45s/it] 60%|██████    | 24/40 [01:19<00:54,  3.43s/it] 62%|██████▎   | 25/40 [01:23<00:51,  3.46s/it] 65%|██████▌   | 26/40 [01:26<00:47,  3.43s/it] 68%|██████▊   | 27/40 [01:30<00:44,  3.46s/it] 70%|███████   | 28/40 [01:33<00:41,  3.43s/it] 72%|███████▎  | 29/40 [01:37<00:37,  3.41s/it] 75%|███████▌  | 30/40 [01:40<00:34,  3.43s/it] 78%|███████▊  | 31/40 [01:43<00:30,  3.41s/it] 80%|████████  | 32/40 [01:47<00:28,  3.61s/it] 82%|████████▎ | 33/40 [01:51<00:24,  3.56s/it] 85%|████████▌ | 34/40 [01:55<00:21,  3.56s/it] 88%|████████▊ | 35/40 [01:58<00:17,  3.58s/it] 90%|█████████ | 36/40 [02:02<00:14,  3.53s/it] 92%|█████████▎| 37/40 [02:05<00:10,  3.52s/it] 95%|█████████▌| 38/40 [02:09<00:07,  3.62s/it] 98%|█████████▊| 39/40 [02:12<00:03,  3.58s/it]100%|██████████| 40/40 [02:13<00:00,  2.58s/it]100%|██████████| 40/40 [02:13<00:00,  3.33s/it]
+RMSE (utterance-level) =  0.4434791772785987
+Pearson Correlation Coefficient =  0.9160343600328943
+Spearman Rank Correlation Coefficient =  0.9143623937218428
+Testset under consideration:  NISQA_VAL_LIVE
+  0%|          | 0/4 [00:00<?, ?it/s] 50%|█████     | 2/4 [00:03<00:03,  1.85s/it] 75%|███████▌  | 3/4 [00:06<00:02,  2.45s/it]100%|██████████| 4/4 [00:07<00:00,  1.70s/it]100%|██████████| 4/4 [00:07<00:00,  1.86s/it]
+RMSE (utterance-level) =  0.39148345079314806
+Pearson Correlation Coefficient =  0.8315336856437135
+Spearman Rank Correlation Coefficient =  0.8258476483846824
+Testset under consideration:  NISQA_TEST_FOR
+  0%|          | 0/4 [00:00<?, ?it/s] 50%|█████     | 2/4 [00:03<00:03,  1.67s/it] 75%|███████▌  | 3/4 [00:06<00:02,  2.38s/it]100%|██████████| 4/4 [00:09<00:00,  2.49s/it]100%|██████████| 4/4 [00:09<00:00,  2.35s/it]
+RMSE (utterance-level) =  0.36623207539906893
+Pearson Correlation Coefficient =  0.906857922108656
+Spearman Rank Correlation Coefficient =  0.8968112216712295
+Testset under consideration:  NISQA_TEST_P501
+  0%|          | 0/4 [00:00<?, ?it/s] 50%|█████     | 2/4 [00:03<00:03,  1.78s/it] 75%|███████▌  | 3/4 [00:06<00:02,  2.42s/it]100%|██████████| 4/4 [00:09<00:00,  2.45s/it]100%|██████████| 4/4 [00:09<00:00,  2.34s/it]
+RMSE (utterance-level) =  0.4429824504045556
+Pearson Correlation Coefficient =  0.9111330948677326
+Spearman Rank Correlation Coefficient =  0.9118934017882697
+Testset under consideration:  NISQA_TEST_LIVETALK
+  0%|          | 0/4 [00:00<?, ?it/s] 50%|█████     | 2/4 [00:03<00:03,  1.66s/it] 75%|███████▌  | 3/4 [00:06<00:02,  2.44s/it]100%|██████████| 4/4 [00:09<00:00,  2.35s/it]100%|██████████| 4/4 [00:09<00:00,  2.26s/it]
+RMSE (utterance-level) =  0.6336121393021001
+Pearson Correlation Coefficient =  0.7442421012563708
+Spearman Rank Correlation Coefficient =  0.7121899608795903
